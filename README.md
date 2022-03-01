@@ -45,38 +45,41 @@ On the map view all the available apartments are shown on a map. The same filter
  
  
 ##	Apartment details 
-When an apartment is selected from the list or from the map a details page will be displayed with a map showing the location of the apartment. Besides the apartment information, the apartment`s realtor information is also displayed on this page.  
- 
+When an apartment is selected from the list or from the map a details page will be displayed with a map showing the location of the apartment. Besides the apartment information, the apartment`s realtor information is also displayed on this page.    
+![UI](images/image026.png)  
  
 ##	Realtor dashboard
-Realtors can edit and add new apartments using the realtor dashboard which can be access from the top toolbar. On this page realtors will be presented with a simplified, paginated list of the apartments they own. From this list they can edit or delete any entry.
+Realtors can edit and add new apartments using the realtor dashboard which can be access from the top toolbar. On this page realtors will be presented with a simplified, paginated list of the apartments they own. From this list they can edit or delete any entry.  
+![UI](images/image028.png)  
  
 (The list will contain 15 entries/page, this image only contains 2 for brevity)
-When a realtor clicks the Add new apartment button or the pencil icon next to one of the apartments, the apartment editor window is displayed.
- 
+When a realtor clicks the Add new apartment button or the pencil icon next to one of the apartments, the apartment editor window is displayed.  
+![UI](images/image030.png)  
+
 To make it easier for realtors to input the geocoordinates, the address field can be used to search for the latitude and longitude coordinates of a place based on its address.
-The editor fields are validated on saving and the validation errors are displayed to help users identify the problems easier.
- 
+The editor fields are validated on saving and the validation errors are displayed to help users identify the problems easier.  
+![UI](images/image032.png)   
  
 ##	User profile modifications
 When the Edit profile button is clicked in the top navigation bar a popup is displayed where users can edit their names and profile pictures. When a user registers using Facebook or Google then the initial profile picture is downloaded from their external account, but later it can be changed in this editor.
- 
+![UI](images/image034.png)   
  
 ##	Admin panel
 The Admin panel consists of two pages. One view contains a paginated list of users and another the list of apartments. The admin is able to create/read/update and delete users and apartments, assign users into Roles, unblock blocked users and send email invitations to new users. 
 ###	 User management
-On the admin panel a list of all the users from the system is displayed showing basic information about each user including it`s roles. This table shows the blocked user status as well.
- 
+On the admin panel a list of all the users from the system is displayed showing basic information about each user including it`s roles. This table shows the blocked user status as well.  
+![UI](images/image036.png)   
 ###	Removing user locks
 In case of blocked users, a button with a key icon is displayed. Using this button, the administrator can unblock the account. In this case the user will receive an email with a link to reset his password, however it is not required for the user to change his password if he still remembers his old one.
 ###	Creating and editing users
-The admin can create new users and edit existing users. A similar editor window is shown when editing a user and when creating a new one with the exception that the password cannot be edited in case of existing users.
+The admin can create new users and edit existing users. A similar editor window is shown when editing a user and when creating a new one with the exception that the password cannot be edited in case of existing users.  
+![UI](images/image038.png)  
  
 ###	User deletion
 Admin users also have the possibility to delete existing users using the delete buttons in the users table. When a realtor user is deleted all the apartments that belong to that realtor are deleted as well.
 ###	User invitations
-Admin users can invite new users to join the system by clicking the Invite new user button on the admin dashboard. After entering a valid email address and clicking the Send button an email message is sent with a link to the registration page. Invited users must register using the same workflow as regular new users.
- 
+Admin users can invite new users to join the system by clicking the Invite new user button on the admin dashboard. After entering a valid email address and clicking the Send button an email message is sent with a link to the registration page. Invited users must register using the same workflow as regular new users.  
+![UI](images/image040.png)  
 
 ###	Apartment management 
 Administrators can see and manage all the apartments in the system. On the admin dashboard a similar list is displayed as on the realtor dashboard with the exception that this list contains each apartment from each realtor. The administrator can add new apartments, edit, and delete each existing apartment the same way that realtors can, except that admins can also assign apartments t other realtors as well.
