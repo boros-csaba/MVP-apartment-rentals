@@ -23,23 +23,25 @@ If a user tries to log in before the email address is verified a validation erro
 ###	 User lockout
 After 3 consecutive failed login attempts users are automatically blocked out of the system. In this case the user needs to contact and administrator to have their account unblocked. When an administrator unblocks the account the user receives an email from the system with a link to reset their password.
  
-If the user clicks the Reset password button, then the follow screen is displayed. Here the user can choose a new password for his account.
- 
+If the user clicks the Reset password button, then the follow screen is displayed. Here the user can choose a new password for his account.  
+![UI](images/image015.png)   
 
 ###	 Clients and Realtors
 Upon registration each user is first assigned the role of a client. Later, if the user wishes to switch his role and become a realtor, he can change his role by clicking the Become a Realtor button on the top navigation bar.
   
 ##	Main page
-The main page contains the list of apartments that are available for renting. The list displays 5 entries at a time sorted by the date of the entry, starting from the newest apartment. The list can be navigated using the Prev and Next buttons at the bottom of the list. If there are no more previous or next pages the respective button will not show up.
+The main page contains the list of apartments that are available for renting. The list displays 5 entries at a time sorted by the date of the entry, starting from the newest apartment. The list can be navigated using the Prev and Next buttons at the bottom of the list. If there are no more previous or next pages the respective button will not show up.  
+![UI](images/image019.png) 
  
-The list can be filtered using the filter fields in the right sidebar. The filters are applied immediately using the Apply button.
- 
+The list can be filtered using the filter fields in the right sidebar. The filters are applied immediately using the Apply button.  
+![UI](images/image021.png)    
  
 This main page is displayed for all users, including Realtors and the Admin after login. In the top navigation bar, there are buttons to access the admin panel, the realtor dashboard and the Map view.
  
  
 ##	Map view
-On the map view all the available apartments are shown on a map. The same filters can be applied as on the main page. When clicking on an apartment`s pinned location on the map a small summary window is displayed and from here users can navigate to the details page of the apartment.
+On the map view all the available apartments are shown on a map. The same filters can be applied as on the main page. When clicking on an apartment`s pinned location on the map a small summary window is displayed and from here users can navigate to the details page of the apartment.  
+![UI](images/image024.png)   
  
  
 ##	Apartment details 
