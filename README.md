@@ -1,5 +1,5 @@
 # Apartment rentals MVP
-
+Working MVP for an apartment rentals management wesbite created using ASP.NET MVC Core and Angular. 
 ##	User registration and login
 ###	User login
 The first screen of the web application is a login page with a link to the registration page and social login buttons for Google and Facebook login.  
