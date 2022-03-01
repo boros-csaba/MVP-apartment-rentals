@@ -2,23 +2,23 @@
 
 ##	User registration and login
 ###	User login
-The first screen of the web application is a login page with a link to the registration page and social login buttons for Google and Facebook login.
- 
+The first screen of the web application is a login page with a link to the registration page and social login buttons for Google and Facebook login.  
+![UI](images/image001.png)
 
 ###	 User registration
-Users can register by logging in with Facebook or Google. When a user signs in for the first time with Google or with Facebook a new account is created. Users can also choose to use the registration form to create their accounts. 
- 
+Users can register by logging in with Facebook or Google. When a user signs in for the first time with Google or with Facebook a new account is created. Users can also choose to use the registration form to create their accounts.   
+![UI](images/image003.png)
 
-The registration form input is validated right away, and the validation errors are displayed bellow each field.
+The registration form input is validated right away, and the validation errors are displayed bellow each field.  
+![UI](images/image005.png)
  
 
 ###	 Email confirmation
 After registration an email is sent out by the system to let users confirm their email address.
- 
-After the user clicks the link in the email the following page is displayed where the actual confirmation takes place. 
- 
-If a user tries to log in before the email address is verified a validation error is shown with a button to request a new confirmation email to be sent:
- 
+After the user clicks the link in the email the following page is displayed where the actual confirmation takes place.  
+![UI](images/image009.png)  
+If a user tries to log in before the email address is verified a validation error is shown with a button to request a new confirmation email to be sent:  
+![UI](images/image011.png) 
 
 ###	 User lockout
 After 3 consecutive failed login attempts users are automatically blocked out of the system. In this case the user needs to contact and administrator to have their account unblocked. When an administrator unblocks the account the user receives an email from the system with a link to reset their password.
