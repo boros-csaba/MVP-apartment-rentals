@@ -1,0 +1,115 @@
+<h4>Edit {{ data.apartment.name }}</h4>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" formControlName="name"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.name.errors }" />
+            <div *ngIf="submitted && form.controls.name.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.name.errors.required">Apartment name is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="floorAreaSize" class="col-sm-2 col-form-label">Floor area size <small>(m<sup>2</sup>)</small></label>
+        <div class="col-sm-4">
+            <input type="number" class="form-control" id="floorAreaSize" formControlName="floorAreaSize"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.floorAreaSize.errors }" />
+            <div *ngIf="submitted && form.controls.floorAreaSize.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.floorAreaSize.errors.required">Floor area size is required!</div>
+                <div *ngIf="form.controls.floorAreaSize.errors.min">Floor area size must be greater then 0!</div>
+            </div>
+        </div>
+        <label for="numberOfRooms" class="col-sm-2 col-form-label">Number of rooms</label>
+        <div class="col-sm-4">
+            <input type="number" onkeypress="return !(event.charCode == 46)" step="1" class="form-control" id="numberOfRooms" formControlName="numberOfRooms"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.numberOfRooms.errors }" />
+            <div *ngIf="submitted && form.controls.numberOfRooms.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.numberOfRooms.errors.required">Number of rooms is required!</div>
+                <div *ngIf="form.controls.numberOfRooms.errors.min">Floor area size must be greater then 0!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="pricePerMonth" class="col-sm-2 col-form-label">Price/month <small>($)</small></label>
+        <div class="col-sm-4">
+            <input type="number" class="form-control" id="pricePerMonth" formControlName="pricePerMonth"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.pricePerMonth.errors }" />
+            <div *ngIf="submitted && form.controls.pricePerMonth.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.pricePerMonth.errors.required">Price is required!</div>
+            </div>
+        </div>
+        <label for="isAvailable" class="col-sm-2 col-form-label">Is Avaialble</label>
+        <div class="col-sm-1">
+            <input type="checkbox" class="form-control" id="isAvailable" formControlName="isAvailable" />
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <hr />
+    <h6>Location</h6>
+    <div class="form-group row">
+        <label for="latitude" class="col-sm-2 col-form-label">Latitude</label>
+        <div class="col-sm-4">
+            <input type="number" class="form-control" id="latitude" formControlName="latitude"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.latitude.errors }" />
+            <div *ngIf="submitted && form.controls.latitude.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.latitude.errors.required">Latitude is required!</div>
+                <div *ngIf="form.controls.latitude.errors.min">The latitude can range between -90 and 90!</div>
+                <div *ngIf="form.controls.latitude.errors.max">The latitude can range between -90 and 90!</div>
+            </div>
+        </div>
+        <label for="longitude" class="col-sm-2 col-form-label">Longitude</label>
+        <div class="col-sm-4">
+            <input type="number" class="form-control" id="longitude" formControlName="longitude"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.longitude.errors }" />
+            <div *ngIf="submitted && form.controls.longitude.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.longitude.errors.required">Longitude is required!</div>
+                <div *ngIf="form.controls.longitude.errors.min">The longitude can range between -180 and 180!</div>
+                <div *ngIf="form.controls.longitude.errors.max">The longitude can range between -180 and 180!</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <small>If you don`t knwo the exact coordinates, you can user the bellow field to fill in the coordinates based on the address.</small>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="address" class="col-sm-2 col-form-label">Address search</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="address" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" 
+            [ngClass]="{ 'is-invalid': addressError }"/>
+            <small>{{addressError}}</small>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-secondary mr-3" (click)="searchAddress()">Search</button>
+        </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <textarea rows="5" class="form-control" id="description" formControlName="description"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.description.errors }"></textarea>
+            <div *ngIf="submitted && form.controls.description.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.description.required">Meal title is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="data.asAdmin && users">
+        <label for="userId" class="col-sm-2 col-form-label">Realtor</label>
+        <div class="col-sm-10">
+            <mat-select formControlName="userId" class="form-control" id="userId">
+                <mat-option *ngFor="let user of users" [value]="user">
+                    {{ user.firstName }} {{ user.lastName }}
+                </mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <button id="apartmentSaveButton" type="submit" [disabled]="loading" class="btn btn-primary">Save</button>
+    <img *ngIf="loading" class="pl-3"
+        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <button type="button" class="editor-button btn btn-secondary" (click)="close()">Close</button>
+</form>

@@ -1,0 +1,11 @@
+<div class="main-header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm">
+    <a id="homeButton" class="my-0 mr-md-auto font-weight-normal text-dark" (click)="goHome()" href="javascript:void(0)"><h5>MVP Apartment Rentals</h5></a>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a *ngIf="loginInformation?.isAdmin" id="adminPanelButton" class="p-3 text-dark" (click)="goToAdminDashboard()" href="javascript:void(0)">Admin panel</a>
+        <a *ngIf="loginInformation?.isRealtor" id="realtorDashboardButton" class="p-3 text-dark" (click)="goToRealtorDashboard()" href="javascript:void(0)">Manage apartments</a>
+        <a *ngIf="loginInformation && !loginInformation?.isRealtor" class="p-3 text-dark" (click)="becomeRealtor()" href="javascript:void(0);">Become a Realtor</a>
+        <a *ngIf="loginInformation" class="p-3 text-dark" (click)="goToMapView()" href="javascript:void(0)">Map view</a>
+        <a *ngIf="loginInformation" class="p-3 text-dark" (click)="openProfileEditorDialog()" href="javascript:void(0)">Edit profile</a>
+    </nav>
+    <a *ngIf="loginInformation" id="logoutButton" class="btn btn-outline-secondary" (click)="logout()">Logout</a>
+</div>

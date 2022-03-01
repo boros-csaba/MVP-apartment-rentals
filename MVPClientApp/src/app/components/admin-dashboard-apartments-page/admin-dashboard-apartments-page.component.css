@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mat-column-price {
+    flex: 0 0 100px;
+}
+
+.mat-column-available {
+    flex: 0 0 100px;
+}
+
+.mat-column-addedOn {
+    flex: 0 0 100px;
+}
+  
+.mat-column-edit {
+    flex: 0 0 50px;
+}
+  
+.mat-column-delete {
+    flex: 0 0 50px;
+}
+  

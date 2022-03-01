@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+  
+.mat-column-edit {
+    flex: 0 0 50px;
+}
+  
+.mat-column-delete {
+    flex: 0 0 50px;
+}
+  
+.mat-column-unblock {
+    flex: 0 0 50px;
+}
+
+.mat-column-blocked {
+    flex: 0 0 70px;
+}
+
+.mat-column-firstName {
+    flex: 0 0 150px;
+}
+
+.mat-column-lastName {
+    flex: 0 0 150px;
+}
+
+.mat-column-roles {
+    flex: 0 0 150px;
+}
+  

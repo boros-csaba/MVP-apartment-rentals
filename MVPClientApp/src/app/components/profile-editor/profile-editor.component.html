@@ -1,0 +1,39 @@
+<h4>Edit profile</h4>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group row">
+        <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="firstName" formControlName="firstName"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.firstName.errors }" />
+            <div *ngIf="submitted && form.controls.firstName.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.firstName.errors.required">First Name is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                [ngClass]="{ 'is-invalid': submitted && form.controls.lastName.errors }" />
+            <div *ngIf="submitted && form.controls.lastName.errors" class="invalid-feedback">
+                <div *ngIf="form.controls.lastName.errors.required">Last Name is required!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Profil Image</label>
+        <div class="col-sm-2" *ngIf="profileImage">
+            <img width="80px" height="80px" src="data:image/gif;base64,{{profileImage}}">
+        </div>
+        <div class="col-sm-7">
+            <input class="form-control" type="file" (change)="onFileSelected($event)">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" [disabled]="loading" class="btn btn-primary">Save</button>
+        <img *ngIf="loading" class="pl-3"
+            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <button type="button" class="editor-button btn btn-secondary" (click)="close()">Close</button>
+    </div>
+</form>

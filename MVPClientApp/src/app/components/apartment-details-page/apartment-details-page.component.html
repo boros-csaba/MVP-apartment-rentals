@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="main-content card">
+                <div class="card-header" *ngIf="apartment">
+                    <h3>
+                        {{apartment.name}}
+                        <i *ngIf="apartment.isAvailable"> - Avaialble</i>
+                        <i *ngIf="!apartment.isAvailable"> - Rented</i>
+                    </h3>
+                </div>
+                <div class="card-body" *ngIf="apartment">
+                    <p>{{apartment.description}}</p>
+                    <div class="row">
+                        <div class="col-4 centered">
+                            Floor area size<br />
+                            <b>{{apartment.floorAreaSize}} m<sup>2</sup></b>
+                        </div>
+                        <div class="col-4 centered">
+                            Number of rooms<br />
+                            <b>{{apartment.numberOfRooms}}</b>
+                        </div>
+                        <div class="col-4 centered">
+                            Price/month<br />
+                            <b>${{apartment.pricePerMonth}}</b>
+                        </div>
+                    </div>
+                    <br />
+                    <agm-map [latitude]="apartment.latitude" [longitude]="apartment.longitude" [zoom]="15">
+                        <agm-marker [latitude]="apartment.latitude" [longitude]="apartment.longitude"></agm-marker>
+                    </agm-map>
+                    <small>Coordinates: {{apartment.latitude}}, {{apartment.longitude}} - Added on {{apartment.addedDate | date:'mediumDate'}}</small>
+                    <hr />
+                    <p>Realtor contact information:</p>
+                    <div class="row" *ngIf="realtor">
+                        <div class="ml-3" *ngIf="realtorProfileImage">
+                            <img width="100px" height="100px" src="data:image/gif;base64,{{realtorProfileImage}}">
+                        </div>
+                        <div class="ml-3">
+                            <p>{{realtor.firstName}} {{realtor.lastName}}</p>
+                            <p>{{realtor.email}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

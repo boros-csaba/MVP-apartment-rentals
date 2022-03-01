@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="container">
+        <div class="row buttons-row">
+                <button id="addNewUserButton" class="editor-button btn btn-primary management-button" (click)="openAddUserPopup()">Add new user</button>
+                <button class="editor-button btn btn-primary management-button" (click)="openInviteUserDialog()">Invite new user</button>
+                <button id="adminManageApartmensButton" class="editor-button btn btn-primary management-button" [routerLink]="['/adminDashboardApartments']">Manage apartments</button>
+            </div>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z4">
+        <ng-container cdkColumnDef="firstName">
+            <mat-header-cell *cdkHeaderCellDef> First Name </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> <span class="userFirstName">{{ row.firstName }}</span></mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="lastName">
+            <mat-header-cell *cdkHeaderCellDef> Last Name </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{ row.lastName }} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="email">
+            <mat-header-cell *cdkHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> <span class="userEmail">{{ row.email }}</span></mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="roles">
+            <mat-header-cell *cdkHeaderCellDef> Roles </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{ row.roles.join(', ') }} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="blocked">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> <b *ngIf="row.isBlocked">Blocked</b></mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="unblock">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row">
+                <button *ngIf="row.isBlocked" (click)="unblockUser(row)" type="button" class="btn btn-secondary">
+                    <span class="fa fa-key"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="edit">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row">
+                <button (click)="openDialog(row)" type="button" class="editButton btn btn-secondary">
+                    <span class="fa fa-pencil"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="delete">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row">
+                <button (click)="deleteUser(row)" type="button" class="deleteButton btn btn-secondary">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row
+            *cdkHeaderRowDef="['firstName', 'lastName', 'email', 'roles', 'blocked', 'unblock', 'edit', 'delete']">
+        </mat-header-row>
+        <mat-row
+            *cdkRowDef="let row; columns: ['firstName', 'lastName', 'email', 'roles', 'blocked', 'unblock', 'edit', 'delete']">
+        </mat-row>
+    </mat-table>
+    <br />
+    <div class="row">
+        <div class="col-1">
+            <button *ngIf="prev" (click)="prevPage()" class="btn btn-primary">Prev</button>
+        </div>
+        <div class="col-10"></div>
+        <div class="col-1">
+            <button *ngIf="next" (click)="nextPage()" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+    <br />
+</div>

@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row buttons-row">
+        <button id="addNewApartmentButton" class="editor-button btn btn-primary management-button" (click)="openAddApartmentPopup()">Add new apartment</button>
+    </div>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z4">
+        <ng-container cdkColumnDef="name">
+            <mat-header-cell *cdkHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{ row.name }} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="price">
+            <mat-header-cell *cdkHeaderCellDef> Price/Month </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> ${{ row.pricePerMonth }} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="available">
+            <mat-header-cell *cdkHeaderCellDef> State </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{ row.isAvailable ? 'Available' : 'Rented' }} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="addedOn">
+            <mat-header-cell *cdkHeaderCellDef> Added on </mat-header-cell>
+            <mat-cell *cdkCellDef="let row"> {{row.addedDate | date:'mediumDate'}} </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="edit">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row">
+                <button id="editApartmentButton" (click)="openDialog(row)" type="button" class="btn btn-secondary">
+                    <span class="fa fa-pencil"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container cdkColumnDef="delete">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let row">
+                <button id="deleteApartmentButton" (click)="deleteApartment(row)" type="button" class="btn btn-secondary">
+                    <span class="fa fa-trash"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row
+            *cdkHeaderRowDef="['name', 'price', 'available', 'addedOn', 'edit', 'delete']">
+        </mat-header-row>
+        <mat-row
+            *cdkRowDef="let row; columns: ['name', 'price', 'available', 'addedOn', 'edit', 'delete']">
+        </mat-row>
+    </mat-table>
+    <br />
+    <div class="row">
+        <div class="col-1">
+            <button *ngIf="prev" (click)="prevPage()" class="btn btn-primary">Prev</button>
+        </div>
+        <div class="col-10"></div>
+        <div class="col-1">
+            <button *ngIf="next" (click)="nextPage()" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+    <br />
+</div>

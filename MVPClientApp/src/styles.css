@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    background: #fafafa;
+}
+
+.container {
+    max-width: 960px;
+}
+
+.main-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.list-item {
+    margin-top: 10px;
+}
+.centered {
+    text-align: center;
+}
+
+.management-button {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+  
+.buttons-row {
+    margin-right: 3px;
+    justify-content: flex-end;
+}
+  

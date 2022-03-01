@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row main-content">
+        <div class="col-9">
+            <app-apartment-list [filter]="filter"></app-apartment-list>
+        </div>
+        <div class="col-3 filters-block">
+            <app-filters (filterUpdated)="updateFilters($event)"></app-filters>
+        </div>
+    </div>
+</div>
